@@ -19,3 +19,4 @@ fastapi
 uvicorn
 tf-keras
 opencv-python-headless
+mangum
