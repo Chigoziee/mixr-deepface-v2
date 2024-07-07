@@ -3,17 +3,22 @@ from deepface import DeepFace
 import requests, io, tempfile, os
 from PIL import Image
 from pydantic import BaseModel, HttpUrl
+from mangum import Mangum
 
 
 app = FastAPI()
+handler = Mangum(app)
+
 
 class User(BaseModel):
     imageid: str
     url: HttpUrl
 
+
 class Item(BaseModel):
     user: User
     images: list[User]
+
 
 @app.get("/")
 def welcome():
